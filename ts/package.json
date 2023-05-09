@@ -10,8 +10,8 @@
     "airdrop": "ts-node ./prereq/airdrop.ts",
     "transfer": "ts-node ./prereq/transfer.ts",
     "enroll": "ts-node ./prereq/enroll.ts",
-    "spl_init": "ts-node ./cluster1/spl_mint_init.ts",
-    "spl_mint": "ts-node ./cluster1/spl_mint_to_address.ts",
+    "spl_init": "ts-node ./cluster1/spl_init.ts",
+    "spl_mint": "ts-node ./cluster1/spl_mint.ts",
     "spl_transfer": "ts-node ./cluster1/spl_transfer.ts",
     "spl_metadata": "ts-node ./cluster1/spl_metadata.ts"
   },
