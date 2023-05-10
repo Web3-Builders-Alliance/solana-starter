@@ -16,7 +16,23 @@ const mint = new PublicKey("<mint address>");
 
 (async () => {
     try {
-        // Start here
+        const ata = await getOrCreateAssociatedTokenAccount(
+            connection,
+            keypair,
+            mint,
+            keypair.publicKey
+        );
+        console.log(`Your ata is: ${ata.address.toBase58()}`);
+
+        const mintTx = await mintTo(
+            connection,
+            keypair,
+            mint,
+            ata.address,
+            keypair,
+            1000n * token_decimals
+        )
+        console.log(`Your mint txid: ${mintTx}`);
     } catch(error) {
         console.log(`Oops, something went wrong: ${error}`)
     }
