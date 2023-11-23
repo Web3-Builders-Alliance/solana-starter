@@ -14,25 +14,28 @@ umi.use(signerIdentity(signer));
 
 (async () => {
     try {
+        // Follow this JSON structure
+        // https://docs.metaplex.com/programs/token-metadata/changelog/v1.0#json-structure
+
         // const image = ???
-        const metadata = {
-            name: "?",
-            symbol: "?",
-            description: "?",
-            image: "?",
-            attributes: [
-                {trait_type: '?', value: '?'}
-            ],
-            properties: {
-                files: [
-                    {
-                        type: "image/png",
-                        uri: "?"
-                    },
-                ]
-            },
-            creators: []
-        };
+        // const metadata = {
+        //     name: "?",
+        //     symbol: "?",
+        //     description: "?",
+        //     image: "?",
+        //     attributes: [
+        //         {trait_type: '?', value: '?'}
+        //     ],
+        //     properties: {
+        //         files: [
+        //             {
+        //                 type: "image/png",
+        //                 uri: "?"
+        //             },
+        //         ]
+        //     },
+        //     creators: []
+        // };
         // const myUri = ???
         // console.log("Your image URI: ", myUri);
     }
