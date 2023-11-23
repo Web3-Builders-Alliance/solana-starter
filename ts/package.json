@@ -13,13 +13,17 @@
     "spl_init": "ts-node ./cluster1/spl_init.ts",
     "spl_mint": "ts-node ./cluster1/spl_mint.ts",
     "spl_transfer": "ts-node ./cluster1/spl_transfer.ts",
-    "spl_metadata": "ts-node ./cluster1/spl_metadata.ts"
+    "spl_metadata": "ts-node ./cluster1/spl_metadata.ts",
+    "nft_image": "ts-node ./block1/nft_image.ts",
+    "nft_metadata": "ts-node ./block1/nft_metadata.ts",
+    "nft_mint": "ts-node ./block1/nft_mint.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "0.29.0",
     "@metaplex-foundation/mpl-token-metadata": "3.1.1",
     "@metaplex-foundation/umi": "^0.8.10",
     "@metaplex-foundation/umi-bundle-defaults": "^0.8.10",
+    "@metaplex-foundation/umi-uploader-bundlr": "^0.8.10",
     "@solana/spl-token": "^0.3.9",
     "@solana/web3.js": "^1.87.6",
     "@types/node": "^20.9.3",
