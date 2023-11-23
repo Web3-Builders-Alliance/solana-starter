@@ -1,6 +1,8 @@
 import { Commitment, Connection, Keypair, PublicKey, Transaction, sendAndConfirmTransaction } from "@solana/web3.js"
 import wallet from "../wba-wallet.json"
-import { createCreateMetadataAccountV2Instruction, createCreateMetadataAccountV3Instruction } from "@metaplex-foundation/mpl-token-metadata";
+import { createUmi } from "@metaplex-foundation/umi-bundle-defaults"
+import { createMetadataAccountV3 } from "@metaplex-foundation/mpl-token-metadata";
+import { createSignerFromKeypair, publicKey, signerIdentity, PublicKey as umiPublicKey } from "@metaplex-foundation/umi";
 
 // We're going to import our keypair from the wallet file
 const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
@@ -23,9 +25,19 @@ const metadata_seeds = [
 ];
 const [metadata_pda, _bump] = PublicKey.findProgramAddressSync(metadata_seeds, token_metadata_program_id);
 
+// Create a UMI connection
+const umi = createUmi('https://api.devnet.solana.com');
+const umiKeypair = umi.eddsa.createKeypairFromSecretKey(keypair.secretKey);
+umi.use(signerIdentity(createSignerFromKeypair(umi, umiKeypair)));
+
 (async () => {
     try {
         // Start here
+
+        // let tx = ???
+
+        // let result = tx.sendAndConfirm(umi);
+        // console.log(result);
     } catch(e) {
         console.error(`Oops, something went wrong: ${e}`)
     }
