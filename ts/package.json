@@ -14,9 +14,9 @@
     "spl_mint": "ts-node ./cluster1/spl_mint.ts",
     "spl_transfer": "ts-node ./cluster1/spl_transfer.ts",
     "spl_metadata": "ts-node ./cluster1/spl_metadata.ts",
-    "nft_image": "ts-node ./block1/nft_image.ts",
-    "nft_metadata": "ts-node ./block1/nft_metadata.ts",
-    "nft_mint": "ts-node ./block1/nft_mint.ts"
+    "nft_image": "ts-node ./cluster1/nft_image.ts",
+    "nft_metadata": "ts-node ./cluster1/nft_metadata.ts",
+    "nft_mint": "ts-node ./cluster1/nft_mint.ts"
   },
   "dependencies": {
     "@coral-xyz/anchor": "0.29.0",
