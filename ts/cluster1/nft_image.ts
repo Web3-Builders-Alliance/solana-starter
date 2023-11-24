@@ -2,7 +2,7 @@ import wallet from "../wba-wallet.json"
 import { createUmi } from "@metaplex-foundation/umi-bundle-defaults"
 import { createGenericFile, createSignerFromKeypair, signerIdentity } from "@metaplex-foundation/umi"
 import { createBundlrUploader } from "@metaplex-foundation/umi-uploader-bundlr"
-import { readFile } = "fs/promises"
+import { readFile } from "fs/promises"
 
 // Create a devnet connection
 const umi = createUmi('https://api.devnet.solana.com');
