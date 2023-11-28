@@ -23,7 +23,7 @@ import {
 const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
 
 // Commitment
-const commitment: Commitment = "confirmed";
+const commitment: Commitment = "finalized";
 
 // Create a devnet connection
 const connection = new Connection("https://api.devnet.solana.com");
@@ -40,11 +40,9 @@ const program = new Program<WbaVault>(IDL, "<address>" as Address, provider);
 const vaultState = new PublicKey("<address>");
 
 // Create the PDA for our enrollment account
-// Seeds are "auth", vaultState
 // const vaultAuth = ???
 
 // Create the vault key
-// Seeds are "vault", vaultAuth
 // const vault = ???
 
 // const token_decimals = ???

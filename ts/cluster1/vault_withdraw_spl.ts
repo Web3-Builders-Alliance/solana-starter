@@ -12,14 +12,14 @@ import {
   Address,
   BN,
 } from "@coral-xyz/anchor";
-import { WbaVault, IDL } from "../programs/wba_vault";
-import wallet from "../wba-wallet.json";
+import { WbaVault, IDL } from "./programs/wba_vault";
+import wallet from "./wallet/wba-wallet.json";
 
 // Import our keypair from the wallet file
 const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
 
 // Commitment
-const commitment: Commitment = "confirmed";
+const commitment: Commitment = "finalized";
 
 // Create a devnet connection
 const connection = new Connection("https://api.devnet.solana.com");
@@ -33,7 +33,7 @@ const provider = new AnchorProvider(connection, new Wallet(keypair), {
 const program = new Program<WbaVault>(IDL, "<address>" as Address, provider);
 
 // Create a random keypair
-const vaultState = new PublicKey("<address>")(
+const vaultState = new PublicKey("<address>");
   // Create the PDA for our enrollment account
   // Seeds are "auth", vaultState
   // const vaultAuth = ???
@@ -57,5 +57,5 @@ const vaultState = new PublicKey("<address>")(
     } catch (e) {
       console.error(`Oops, something went wrong: ${e}`);
     }
-  },
+  }
 )();
