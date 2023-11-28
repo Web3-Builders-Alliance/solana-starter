@@ -1,8 +1,24 @@
-import { Connection, Keypair, SystemProgram, PublicKey, Commitment } from "@solana/web3.js"
-import { Program, Wallet, AnchorProvider, Address, BN } from "@project-serum/anchor"
+import {
+  Connection,
+  Keypair,
+  SystemProgram,
+  PublicKey,
+  Commitment,
+} from "@solana/web3.js";
+import {
+  Program,
+  Wallet,
+  AnchorProvider,
+  Address,
+  BN,
+} from "@project-serum/anchor";
 import { WbaVault, IDL } from "../programs/wba_vault";
-import wallet from "../wba-wallet.json"
-import { ASSOCIATED_TOKEN_PROGRAM_ID, TOKEN_PROGRAM_ID, getOrCreateAssociatedTokenAccount } from "@solana/spl-token";
+import wallet from "../wba-wallet.json";
+import {
+  ASSOCIATED_TOKEN_PROGRAM_ID,
+  TOKEN_PROGRAM_ID,
+  getOrCreateAssociatedTokenAccount,
+} from "@solana/spl-token";
 
 // Import our keypair from the wallet file
 const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
@@ -14,18 +30,22 @@ const commitment: Commitment = "confirmed";
 const connection = new Connection("https://api.devnet.solana.com");
 
 // Create our anchor provider
-const provider = new AnchorProvider(connection, new Wallet(keypair), { commitment });
+const provider = new AnchorProvider(connection, new Wallet(keypair), {
+  commitment,
+});
 
 // Create our program
 const program = new Program<WbaVault>(IDL, "<address>" as Address, provider);
 
 // Create a random keypair
-const vaultState = new PublicKey("<address>")
+const vaultState = new PublicKey("<address>");
 
-// Create the PDA for our vault auth
+// Create the PDA for our enrollment account
+// Seeds are "auth", vaultState
 // const vaultAuth = ???
 
 // Create the vault key
+// Seeds are "vault", vaultAuth
 // const vault = ???
 
 // Mint address
@@ -33,33 +53,44 @@ const mint = new PublicKey("<address>");
 
 // Execute our enrollment transaction
 (async () => {
-    try {
+  try {
+    const metadataProgram = new PublicKey(
+      "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s",
+    );
+    const metadataAccount = PublicKey.findProgramAddressSync(
+      [Buffer.from("metadata"), metadataProgram.toBuffer(), mint.toBuffer()],
+      metadataProgram,
+    )[0];
+    const masterEdition = PublicKey.findProgramAddressSync(
+      [
+        Buffer.from("metadata"),
+        metadataProgram.toBuffer(),
+        mint.toBuffer(),
+        Buffer.from("edition"),
+      ],
+      metadataProgram,
+    )[0];
 
-        const metadataProgram = new PublicKey("metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s");
-        const metadataAccount = PublicKey.findProgramAddressSync([Buffer.from("metadata"), metadataProgram.toBuffer(), mint.toBuffer()],metadataProgram)[0];
-        const masterEdition = PublicKey.findProgramAddressSync([Buffer.from("metadata"), metadataProgram.toBuffer(), mint.toBuffer(), Buffer.from("edition")],metadataProgram)[0];
+    // Get the token account of the fromWallet address, and if it does not exist, create it
+    // const ownerAta = await getOrCreateAssociatedTokenAccount(
+    //     ???
+    // );
 
-        // Get the token account of the fromWallet address, and if it does not exist, create it
-        // const ownerAta = await getOrCreateAssociatedTokenAccount(
-        //     ???
-        // );
+    // Get the token account of the fromWallet address, and if it does not exist, create it
+    // const vaultAta = await getOrCreateAssociatedTokenAccount(
+    //     ???
+    // );
 
-        // Get the token account of the fromWallet address, and if it does not exist, create it
-        // const vaultAta = await getOrCreateAssociatedTokenAccount(
-        //     ???
-        // );
-
-        // const signature = await program.methods
-        // .withdrawNft()
-        // .accounts({
-        //    ???
-        // })
-        // .signers([
-        //     keypair
-        // ]).rpc();
-        // console.log(`Deposit success! Check out your TX here:\n\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`);
-
-    } catch(e) {
-        console.error(`Oops, something went wrong: ${e}`)
-    }
+    // const signature = await program.methods
+    // .withdrawNft()
+    // .accounts({
+    //    ???
+    // })
+    // .signers([
+    //     keypair
+    // ]).rpc();
+    // console.log(`Deposit success! Check out your TX here:\n\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`);
+  } catch (e) {
+    console.error(`Oops, something went wrong: ${e}`);
+  }
 })();
