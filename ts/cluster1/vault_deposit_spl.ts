@@ -50,14 +50,7 @@ const mint = new PublicKey("<address>");
         // const signature = await program.methods
         // .depositSpl(new BN(<number>))
         // .accounts({
-        //     owner: ,
-        //     ownerAta: ,
-        //     vaultState: ,
-        //     vaultAuth: ,
-        //     vaultAta: ,
-        //     tokenMint: ,
-        //     tokenProgram: TOKEN_PROGRAM_ID,
-        //     systemProgram: SystemProgram.programId,
+        //     ???
         // })
         // .signers([
         //     keypair

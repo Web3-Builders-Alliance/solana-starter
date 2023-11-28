@@ -34,11 +34,7 @@ const vaultState = new PublicKey("<address>")
         // const signature = await program.methods
         // .deposit(new BN(<number>)    )
         // .accounts({
-        //     owner: ,
-        //     vaultState: ,
-        //     vaultAuth: ,
-        //     vault: ,
-        //     systemProgram: SystemProgram.programId,
+        //    ???
         // })
         // .signers([
         //     keypair

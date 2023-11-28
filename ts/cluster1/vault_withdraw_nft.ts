@@ -52,18 +52,7 @@ const mint = new PublicKey("<address>");
         // const signature = await program.methods
         // .withdrawNft()
         // .accounts({
-        //     owner: ,
-        //     ownerAta: ,
-        //     vaultState: ,
-        //     vaultAuth: ,
-        //     vaultAta: ,
-        //     tokenMint: ,
-        //     nftMetadata: ,
-        //     nftMasterEdition: ,
-        //     tokenProgram: TOKEN_PROGRAM_ID,
-        //     associatedTokenProgram: ASSOCIATED_TOKEN_PROGRAM_ID,
-        //     metadataProgram: metadataProgram,
-        //     systemProgram: SystemProgram.programId,
+        //    ???
         // })
         // .signers([
         //     keypair

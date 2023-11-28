@@ -30,10 +30,7 @@ const vaultState = new PublicKey("<address>");
         // const signature = await program.methods
         // .closeAccount()
         // .accounts({
-        //     owner: ,
-        //     vaultState: ,
-        //     closeVaultState: ,
-        //     systemProgram: ,
+        //     ???
         // })
         // .signers([
         //     keypair

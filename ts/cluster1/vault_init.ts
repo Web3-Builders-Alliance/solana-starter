@@ -35,11 +35,7 @@ console.log(`Vault public key: ${vaultState.publicKey.toBase58()}`);
 
         // const signature = await program.methods.initialize()
         // .accounts({
-        //     owner: 
-        //     vaultState: 
-        //     vaultAuth: ,
-        //     vault: ,
-        //     systemProgram: SystemProgram.programId
+        //     ???
         // }).signers([keypair, vaultState]).rpc();
         // console.log(`Init success! Check out your TX here:\n\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`);
     
