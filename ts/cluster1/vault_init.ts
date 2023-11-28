@@ -5,14 +5,10 @@ import {
   PublicKey,
   Commitment,
 } from "@solana/web3.js";
-import {
-  Program,
-  Wallet,
-  AnchorProvider,
-  Address,
-} from "@project-serum/anchor";
+import { Program, Wallet, AnchorProvider, Address } from "@coral-xyz/anchor";
 import { WbaVault, IDL } from "./programs/wba_vault";
 import wallet from "./wallet/wba-wallet.json";
+/// J8qKEmQpadFeBuXAVseH8GNrvsyBhMT8MHSVD3enRgJz
 
 // Import our keypair from the wallet file
 const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
