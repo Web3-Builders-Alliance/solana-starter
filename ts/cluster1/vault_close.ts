@@ -24,10 +24,9 @@ const vaultState = new PublicKey("<address>");
 // Create a random keypair
 // const closeVaultState = ???
 
-// Execute our enrollment transaction
 (async () => {
     try {
-        
+
         // const signature = await program.methods
         // .closeAccount()
         // .accounts({
