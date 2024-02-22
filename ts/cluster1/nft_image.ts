@@ -12,7 +12,6 @@ const signer = createSignerFromKeypair(umi, keypair);
 
 umi.use(irysUploader());
 umi.use(signerIdentity(signer));
-//1. Tell umi which uploader to use.
 
 (async () => {
     try {
