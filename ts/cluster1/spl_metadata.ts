@@ -40,8 +40,8 @@ umi.use(signerIdentity(createSignerFromKeypair(umi, keypair)));
         //     }
         // )
 
-        // let result = await tx.sendAndConfirm(umi).then(r => r.signature.toString());
-        // console.log(result);
+        // let result = await tx.sendAndConfirm(umi);
+        // console.log(bs58.encode(result.signature));
     } catch(e) {
         console.error(`Oops, something went wrong: ${e}`)
     }
