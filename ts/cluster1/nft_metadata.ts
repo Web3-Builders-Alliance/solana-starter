@@ -37,7 +37,7 @@ umi.use(signerIdentity(signer));
         //     creators: []
         // };
         // const myUri = ???
-        // console.log("Your image URI: ", myUri);
+        // console.log("Your metadata URI: ", myUri);
     }
     catch(error) {
         console.log("Oops.. Something went wrong", error);
