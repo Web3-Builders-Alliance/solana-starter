@@ -15,14 +15,20 @@ umi.use(signerIdentity(signer));
 
 (async () => {
     try {
+        
         //1. Load image
+        const image = await readFile("/home/ubuntu/solana-starter/ts/assets/generug.png")
+        
         //2. Convert image to generic file.
+        const generic = createGenericFile(image, "rug", {
+            contentType: "image/png"
+        })
+        
         //3. Upload image
-
-        // const image = ???
-
-        // const [myUri] = ??? 
-        // console.log("Your image URI: ", myUri);
+        const [myUri] = await umi.uploader.upload([generic]);
+        console.log("Your image URI: ", myUri);
+        // https://arweave.net/fsK6U0oLwsgaPWOC-XUpPKkrHmJFOpNaPShM5ZO7zAs
+        // https://arweave.net/E1AkEkxMT8Eieo8anjZwIPVCXtd1gAoVdsaeaqzWv-Q
     }
     catch(error) {
         console.log("Oops.. Something went wrong", error);
