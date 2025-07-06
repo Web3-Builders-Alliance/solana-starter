@@ -12,8 +12,8 @@ import {
   Address,
   BN,
 } from "@coral-xyz/anchor";
-import { WbaVault, IDL } from "../programs/wba_vault";
-import wallet from "../turbin3-wallet.json";
+import { WbaVault, IDL } from "./wallet/programs/wba_vault";
+import wallet from "./wallet/turbin3-wallet.json";
 import {
   TOKEN_PROGRAM_ID,
   getOrCreateAssociatedTokenAccount,

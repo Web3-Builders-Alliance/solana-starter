@@ -1,26 +1,32 @@
-import { createUmi } from "@metaplex-foundation/umi-bundle-defaults"
-import { createSignerFromKeypair, signerIdentity, generateSigner, percentAmount } from "@metaplex-foundation/umi"
-import { createNft, mplTokenMetadata } from "@metaplex-foundation/mpl-token-metadata";
+import wallet from "./wallet/turbin3-wallet.json"
+import { createNft, mplTokenMetadata } from "@metaplex-foundation/mpl-token-metadata"
+import { createSignerFromKeypair, percentAmount, generateSigner, signerIdentity } from "@metaplex-foundation/umi"
+import { createUmi } from '@metaplex-foundation/umi-bundle-defaults';
 
-import wallet from "../turbin3-wallet.json"
-import base58 from "bs58";
-
-const RPC_ENDPOINT = "https://api.devnet.solana.com";
+const RPC_ENDPOINT = "https://api.devnet.solana.com"
 const umi = createUmi(RPC_ENDPOINT);
+     
+const keypair = umi.eddsa.createKeypairFromSecretKey(new Uint8Array(wallet))
+const signer = createSignerFromKeypair(umi, keypair)
 
-let keypair = umi.eddsa.createKeypairFromSecretKey(new Uint8Array(wallet));
-const myKeypairSigner = createSignerFromKeypair(umi, keypair);
-umi.use(signerIdentity(myKeypairSigner));
-umi.use(mplTokenMetadata())
+umi.use(signerIdentity(signer));
+umi.use(mplTokenMetadata());
 
 const mint = generateSigner(umi);
 
 (async () => {
-    // let tx = ???
-    // let result = await tx.sendAndConfirm(umi);
-    // const signature = base58.encode(result.signature);
-    
-    // console.log(`Succesfully Minted! Check out your TX here:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`)
-
-    console.log("Mint Address: ", mint.publicKey);
+    try {
+        let tx = createNft(umi, {
+            mint,
+            name: "Turbin3 Thunders",
+            uri: "https://gateway.irys.xyz/GJJiP9ShTFZX9cfj6UtEUUWu3z7TLH6uP9mb51pjPbax",
+            sellerFeeBasisPoints: percentAmount(5),
+            symbol: "TBN3"
+        })
+        let signature = await tx.sendAndConfirm(umi)
+        console.log("Minted NFT signature", signature)
+        console.log("Mint Address:", mint.publicKey.toString())
+    } catch (error) {
+        console.log("Oops, something went wrong:", error)
+    }
 })();
