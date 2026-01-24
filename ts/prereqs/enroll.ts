@@ -7,7 +7,7 @@ import wallet from "../wba-wallet.json"
 const keypair = Keypair.fromSecretKey(new Uint8Array(wallet));
 
 // Create a devnet connection
-const connection = new Connection("https://api.devnet.solana.com");
+const connection = new Connection("https://solana-devnet.g.alchemy.com/v2/FQHmKHAxCcEgQOwt3dAwCYdNxKGlWY4q");
 
 // Github account
 const github = Buffer.from("testaccount", "utf8");

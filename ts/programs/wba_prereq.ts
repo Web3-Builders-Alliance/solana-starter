@@ -1,6 +1,7 @@
 export type WbaPrereq = {
   "version": "0.1.0",
   "name": "wba_prereq",
+  "address": string,
   "instructions": [
     {
       "name": "complete",
@@ -78,6 +79,7 @@ export type WbaPrereq = {
 export const IDL: WbaPrereq = {
   "version": "0.1.0",
   "name": "wba_prereq",
+  "address": "HC2oqz2p6DEWfrahenqdq2moUcga9c9biqRBcdK3XKU1",
   "instructions": [
     {
       "name": "complete",
